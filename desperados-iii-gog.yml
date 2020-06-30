@@ -1,0 +1,31 @@
+name: Desperados III
+game_slug: desperados-iii
+version: GOG
+slug: desperados-iii-gog
+runner: wine
+
+script:
+  files:
+  - installer: N/A:Select the EXE downloaded from GOG
+  - mf_install: https://github.com/z0z0z/mf-install/archive/master.zip
+  game:
+    arch: win64
+    exe: drive_c/game/Desperados III.exe
+    gogid: 1914500649
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      args: /SILENT /LANG=en /SP- /NOCANCEL /SUPPRESSMSGBOXES /NOGUI /DIR="C:/game"
+      executable: installer
+      name: wineexec
+  - extract:
+      dst: $CACHE/mf-install/
+      file: mf_install
+      format: zip
+  - execute:
+      env:
+        WINEPREFIX: $GAMEDIR
+      file: $CACHE/mf-install/mf-install.sh
+  wine:
+    dxvk: true
+    esync: true
