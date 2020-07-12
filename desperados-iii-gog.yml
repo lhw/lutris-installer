@@ -13,6 +13,7 @@ script:
     exe: drive_c/game/Desperados III.exe
     gogid: 1914500649
     prefix: $GAMEDIR
+    require-binaries: taskset
   installer:
   - task:
       args: /SILENT /LANG=en /SP- /NOCANCEL /SUPPRESSMSGBOXES /NOGUI /DIR="C:/game"
@@ -29,3 +30,5 @@ script:
   wine:
     dxvk: true
     esync: true
+  system:
+    prefix_command: taskset -c 1-8
