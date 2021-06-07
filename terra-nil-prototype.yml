@@ -1,0 +1,17 @@
+name: Terra Nil Prototype
+game_slug: terra-nil-prototype
+version: itch.io
+slug: terra-nil-prototype
+runner: linux
+
+script:
+  files:
+  - terranil: N/A:Select the ZIP downloaded from itch.io
+  game:
+    exe: "Terra Nil.x86_64"
+  installer:
+  - extract:
+      dst: $GAMEDIR
+      file: terranil
+      format: zip
+  - chmodx: "$GAMEDIR/Terra Nil.x86_64"
